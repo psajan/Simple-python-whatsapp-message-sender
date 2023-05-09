@@ -2,16 +2,21 @@ import tkinter as tk
 from tkinter import messagebox
 import pywhatkit as whatsapp
 import datetime
+import time
 
 def send_message():
-    phone_number = phone_number_field.get()
+    phone_number = ["+9779848001399","+9779848001399"
+                    ]#phone_number_field.get()
     message = message_field.get("1.0", "end-1c")
     
-    try:
-        whatsapp.sendwhatmsg_instantly(f"+{phone_number}", message)
-        messagebox.showinfo("Message Sent", f"Message sent to {phone_number}: {message}")
-    except Exception as e:
-        messagebox.showerror("Error", str(e))
+    for i in range(len(phone_number)):
+        try:
+            whatsapp.sendwhatmsg_instantly(f"+{phone_number[i]}", message)
+            # time.sleep(2)
+            #whatsapp.sendwhatmsg_instantly(f"+9779848001399", "message")
+            #messagebox.showinfo("Message Sent", f"Message sent to {phone_number}: {message}")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
 
 root = tk.Tk()
 root.title("Send WhatsApp Message")
